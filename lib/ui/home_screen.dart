@@ -1,4 +1,7 @@
+import 'package:e_reciept/data/remote/repository/user_repository.dart';
+import 'package:e_reciept/domain/model/user.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -10,32 +13,36 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    final logOutButton = Material(
-      elevation: 5,
-      borderRadius: BorderRadius.circular(30),
-      color: Colors.blue,
-      child: MaterialButton(
-        padding: const EdgeInsets.fromLTRB(20, 15, 20, 15),
-        minWidth: MediaQuery.of(context).size.width,
-        onPressed: () {
-          Navigator.of(context).pop();
-        },
-        child: const Text('Log out'),
-      ),
-    );
+    final userRepo = Provider.of<UserRepository>(context, listen: false);
 
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Colors.white,
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              logOutButton,
-            ],
-          ),
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Upcoming Users'),
+      ),
+      body: FutureBuilder<List<User>>(
+        future: userRepo.getUpcomingUsers(),
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return const CircularProgressIndicator();
+          } else if (snapshot.hasError) {
+            // Handle error case
+            print('Data: $snapshot.data!.firstName');
+            return Center(
+              child: Text('Error: ${snapshot.error}'),
+            );
+          } else if (snapshot.hasData) {
+            // Build your UI with the received data
+            return ListView.builder(
+              itemCount: snapshot.data!.length,
+              itemBuilder: (context, index) => ListTile(
+                title: Text(snapshot.data![index].firstName),
+              ),
+            );
+          } else {
+            // Handle other cases
+            return const SizedBox(); // Return an empty widget or handle as needed
+          }
+        },
       ),
     );
   }

@@ -91,7 +91,7 @@ class _$UserCopyWithImpl<$Res, $Val extends User>
               as String,
       signUpDate: null == signUpDate
           ? _value.signUpDate
-          : signUpDate //ignore: cast_nullable_to_non_nullable
+          : signUpDate // ignore: cast_nullable_to_non_nullable
               as String,
     ) as $Val);
   }
@@ -157,7 +157,10 @@ class __$$UserImplCopyWithImpl<$Res>
           ? _value.password
           : password // ignore: cast_nullable_to_non_nullable
               as String,
-      signUpDate: null == signUpDate ? _value.signUpDate : signUpDate as String,
+      signUpDate: null == signUpDate
+          ? _value.signUpDate
+          : signUpDate // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -198,19 +201,19 @@ class _$UserImpl implements _User {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-                other is _$UserImpl &&
-                (identical(other.id, id) || other.id == id) &&
-                (identical(other.firstName, firstName) ||
-                    other.firstName == firstName) &&
-                (identical(other.lastName, lastName) ||
-                    other.lastName == lastName) &&
-                (identical(other.userName, userName) ||
-                    other.userName == userName) &&
-                (identical(other.email, email) || other.email == email) &&
-                (identical(other.password, password) ||
-                    other.password == password)) &&
+            other is _$UserImpl &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.firstName, firstName) ||
+                other.firstName == firstName) &&
+            (identical(other.lastName, lastName) ||
+                other.lastName == lastName) &&
+            (identical(other.userName, userName) ||
+                other.userName == userName) &&
+            (identical(other.email, email) || other.email == email) &&
+            (identical(other.password, password) ||
+                other.password == password) &&
             (identical(other.signUpDate, signUpDate) ||
-                other.signUpDate == signUpDate);
+                other.signUpDate == signUpDate));
   }
 
   @override

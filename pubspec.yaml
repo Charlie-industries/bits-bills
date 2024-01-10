@@ -15,6 +15,8 @@ dependencies:
   dio: ^5.3.4
   freezed_annotation: ^2.4.1
   logger: ^2.0.2+1
+  json_annotation: ^4.8.1
+  provider: ^6.1.1
   ##retrofit: ^4.0.3
 
 dev_dependencies:
@@ -24,6 +26,7 @@ dev_dependencies:
   flutter_lints: ^2.0.0
   freezed: ^2.4.5
   build_runner: ^2.4.7
+  json_serializable: ^6.7.1
   ##retrofit_generator: ^8.0.4
 
 flutter:

@@ -1,1 +1,1 @@
-const String apiURL = 'https://ecobillapisflask.azurewebsites.net';
+const String apiURL = 'https://bitsnbills.azurewebsites.net';
