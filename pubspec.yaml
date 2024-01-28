@@ -36,8 +36,8 @@ flutter:
   assets:
     - images/
 
-flutter_custom_scheme:
-  android_scheme: "bnb"
+#flutter_custom_scheme:
+  #android_scheme: "LoginScreen"
   # fonts:
   #   - family: Schyler
   #     fonts:
