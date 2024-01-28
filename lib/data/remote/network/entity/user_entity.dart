@@ -8,13 +8,18 @@ class UpcomingUsers {
 
   List<UserEntity> results;
 
-  factory UpcomingUsers.fromJson(Map<String, dynamic> json) =>
-      _$UpcomingUsersFromJson(json);
+  factory UpcomingUsers.fromJson(List<dynamic> json) {
+    List<UserEntity> users = [];
+    for (var userJson in json) {
+      users.add(UserEntity.fromJson(userJson as Map<String, dynamic>));
+    }
+    return UpcomingUsers(results: users);
+  }
 }
 
 @JsonSerializable()
 class UserEntity {
-  String id;
+  Id id;
   String firstName;
   String lastName;
   String userName;

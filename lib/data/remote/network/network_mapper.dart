@@ -11,7 +11,7 @@ class NetworkMapper {
   User toUserModel(UserEntity entity) {
     try {
       return User(
-          id: entity.id,
+          id: entity.id.toString(),
           firstName: entity.firstName,
           lastName: entity.lastName,
           userName: entity.userName,

@@ -11,12 +11,14 @@ dependencies:
   flutter:
     sdk: flutter
 
-  cupertino_icons: ^1.0.2
+  uni_links: ^0.5.1
+  cupertino_icons: ^1.0.6
   dio: ^5.3.4
   freezed_annotation: ^2.4.1
   logger: ^2.0.2+1
   json_annotation: ^4.8.1
   provider: ^6.1.1
+  url_launcher: ^6.2.4
   ##retrofit: ^4.0.3
 
 dev_dependencies:
@@ -34,6 +36,8 @@ flutter:
   assets:
     - images/
 
+flutter_custom_scheme:
+  android_scheme: "bnb"
   # fonts:
   #   - family: Schyler
   #     fonts:
