@@ -1,8 +1,8 @@
 import 'package:e_reciept/ui/setting_screens/account_screen.dart';
 import 'package:e_reciept/ui/piggy_bank_screen.dart';
 import 'package:flutter/material.dart';
-import '../ui/folder_screen.dart';
 import '../ui/home_screen.dart';
+import '../ui/receipt_screens/receipt_screen.dart';
 
 class SideBarMenu extends StatelessWidget {
   const SideBarMenu({Key? key}) : super(key: key);
@@ -64,7 +64,6 @@ class SideBarMenu extends StatelessWidget {
                 title: const Text('Home'),
                 onTap: () {
                   Navigator.pop(context);
-                  Navigator.pop(context);
                   Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (context) => const HomeScreen(),
                   ));
@@ -74,9 +73,8 @@ class SideBarMenu extends StatelessWidget {
                 title: const Text('Bills'),
                 onTap: () {
                   Navigator.pop(context);
-                  Navigator.pop(context);
-                  Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const FolderScreen(),
+                  Navigator.of(context).pushReplacement(MaterialPageRoute(
+                    builder: (context) => const ReceiptScreen(),
                   ));
                 }),
             ListTile(
@@ -84,8 +82,7 @@ class SideBarMenu extends StatelessWidget {
               title: const Text('Piggy Bank idk'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pop(context);
-                Navigator.of(context).push(MaterialPageRoute(
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
                   builder: (context) => const PiggyBankScreen(),
                 ));
               },
@@ -93,10 +90,7 @@ class SideBarMenu extends StatelessWidget {
             ListTile(
               leading: const Icon(Icons.highlight),
               title: const Text('Highlights'),
-              onTap: () {
-                Navigator.pop(context);
-                Navigator.pop(context);
-              },
+              onTap: () {},
             ),
             const Divider(color: Colors.black54),
             ListTile(

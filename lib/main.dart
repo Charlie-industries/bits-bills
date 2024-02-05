@@ -3,7 +3,6 @@ import 'package:e_reciept/data/remote/network/client/api_client.dart';
 import 'package:e_reciept/data/remote/network/network_mapper.dart';
 import 'package:e_reciept/data/remote/repository/user_repository.dart';
 import 'package:e_reciept/ui/login_ui.dart';
-//import 'package:uni_links/uni_links.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
@@ -17,9 +16,6 @@ class InitialData {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
-  //String initialLink = (await getInitialUri()) as String;
-  //handleLink(initialLink);
 
   final data = await _createData();
   runApp(
@@ -52,9 +48,3 @@ Future<InitialData> _createData() async {
     Provider<UserRepository>.value(value: userRepo),
   ]);
 }
-
-//Future<void> handleLink(String link) async {
-//if (link != null && link.isNotEmpty) {
-//print("Got the link: $link");
-//}
-//}
