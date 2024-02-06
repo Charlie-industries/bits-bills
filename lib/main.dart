@@ -3,7 +3,6 @@ import 'package:e_reciept/data/remote/network/client/api_client.dart';
 import 'package:e_reciept/data/remote/network/network_mapper.dart';
 import 'package:e_reciept/data/remote/repository/user_repository.dart';
 import 'package:e_reciept/ui/login_ui.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
@@ -16,6 +15,8 @@ class InitialData {
 }
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   final data = await _createData();
   runApp(
     MultiProvider(
@@ -30,7 +31,6 @@ Future<void> main() async {
 Future<InitialData> _createData() async {
   final log = Logger(
     printer: PrettyPrinter(),
-    level: kDebugMode ? Level.verbose : Level.nothing,
   );
 
   final apiClient = ApiClient(baseUrl: apiURL);

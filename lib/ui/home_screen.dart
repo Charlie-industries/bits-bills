@@ -1,7 +1,7 @@
-import 'package:e_reciept/data/remote/repository/user_repository.dart';
-import 'package:e_reciept/domain/model/user.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../data/remote/repository/user_repository.dart';
+import '../utils/navigation_drawer.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -17,30 +17,28 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Upcoming Users'),
+        title: const Text('Write a "Title" here'),
+        backgroundColor: Colors.blue,
       ),
-      body: FutureBuilder<List<User>>(
+      drawer: const SideBarMenu(),
+      body: FutureBuilder(
         future: userRepo.getUpcomingUsers(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return const CircularProgressIndicator();
+            return const LinearProgressIndicator(); // Loading indicator while waiting
           } else if (snapshot.hasError) {
-            // Handle error case
-            print('Data: $snapshot.data!.firstName');
-            return Center(
-              child: Text('Error: ${snapshot.error}'),
-            );
+            return Text('Error: ${snapshot.error}');
           } else if (snapshot.hasData) {
-            // Build your UI with the received data
-            return ListView.builder(
-              itemCount: snapshot.data!.length,
-              itemBuilder: (context, index) => ListTile(
-                title: Text(snapshot.data![index].firstName),
+            return ListView(
+              children: List.generate(
+                snapshot.data!.length,
+                (index) => ListTile(
+                  title: Text(snapshot.data![index].firstName),
+                ),
               ),
             );
           } else {
-            // Handle other cases
-            return const SizedBox(); // Return an empty widget or handle as needed
+            return const Text('No data available.'); // Handle no data scenario
           }
         },
       ),

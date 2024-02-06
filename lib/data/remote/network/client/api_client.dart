@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:e_reciept/data/remote/network/entity/user_entity.dart';
 import 'package:e_reciept/domain/exception/network_exception.dart';
@@ -25,8 +27,8 @@ class ApiClient {
       throw NetworkException(
           statusCode: response.statusCode!, message: response.statusMessage);
     } else if (response.statusCode != null) {
-      print('Data on api_client: $response');
-      return UpcomingUsers.fromJson(response.data as Map<String, dynamic>);
+      final jsonResponse = jsonDecode(response.data);
+      return UpcomingUsers.fromJson(jsonDecode(jsonResponse));
     } else {
       throw Exception('Unknown error');
     }

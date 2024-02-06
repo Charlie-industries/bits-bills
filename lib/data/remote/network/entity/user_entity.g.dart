@@ -19,7 +19,7 @@ Map<String, dynamic> _$UpcomingUsersToJson(UpcomingUsers instance) =>
     };
 
 UserEntity _$UserEntityFromJson(Map<String, dynamic> json) => UserEntity(
-      id: json['id'] as String,
+      id: Id.fromJson(json['_id'] as Map<String, dynamic>),
       firstName: json['firstName'] as String,
       lastName: json['lastName'] as String,
       userName: json['userName'] as String,
@@ -30,7 +30,7 @@ UserEntity _$UserEntityFromJson(Map<String, dynamic> json) => UserEntity(
 
 Map<String, dynamic> _$UserEntityToJson(UserEntity instance) =>
     <String, dynamic>{
-      'id': instance.id,
+      '_id': instance.id,
       'firstName': instance.firstName,
       'lastName': instance.lastName,
       'userName': instance.userName,
